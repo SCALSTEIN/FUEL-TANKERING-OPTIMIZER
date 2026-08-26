@@ -1,0 +1,35 @@
+{
+  "B737-800": {
+    "name": "Boeing 737-800",
+    "DOW_kg": 41413,
+    "MZFW_kg": 62731,
+    "MTOW_kg": 79010,
+    "MLW_kg": 66360,
+    "max_fuel_capacity_kg": 20894,
+    "base_burn_rate_kg_hr": 2400.0,
+    "carry_penalty_alpha": 0.038,
+    "cruise_speed_tas_kts": 450
+  },
+  "E190": {
+    "name": "Embraer E190-E1",
+    "DOW_kg": 28080,
+    "MZFW_kg": 40800,
+    "MTOW_kg": 51800,
+    "MLW_kg": 44000,
+    "max_fuel_capacity_kg": 12971,
+    "base_burn_rate_kg_hr": 1750.0,
+    "carry_penalty_alpha": 0.035,
+    "cruise_speed_tas_kts": 440
+  },
+  "B787-8": {
+    "name": "Boeing 787-8 Dreamliner",
+    "DOW_kg": 119950,
+    "MZFW_kg": 161025,
+    "MTOW_kg": 227930,
+    "MLW_kg": 172365,
+    "max_fuel_capacity_kg": 101456,
+    "base_burn_rate_kg_hr": 4800.0,
+    "carry_penalty_alpha": 0.032,
+    "cruise_speed_tas_kts": 490
+  }
+}

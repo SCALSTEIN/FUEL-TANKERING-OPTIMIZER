@@ -1,0 +1,52 @@
+{
+  "HKJK": {
+    "name": "Nairobi (Jomo Kenyatta)",
+    "price_per_gal_usd": 2.85,
+    "currency": "USD"
+  },
+  "HKMO": {
+    "name": "Mombasa (Moi Intl)",
+    "price_per_gal_usd": 2.92,
+    "currency": "USD"
+  },
+  "HKEL": {
+    "name": "Eldoret Intl",
+    "price_per_gal_usd": 2.98,
+    "currency": "USD"
+  },
+  "EBB": {
+    "name": "Entebbe Intl (Uganda)",
+    "price_per_gal_usd": 3.45,
+    "currency": "USD"
+  },
+  "KGL": {
+    "name": "Kigali Intl (Rwanda)",
+    "price_per_gal_usd": 3.65,
+    "currency": "USD"
+  },
+  "DAR": {
+    "name": "Dar es Salaam (Julius Nyerere)",
+    "price_per_gal_usd": 3.2,
+    "currency": "USD"
+  },
+  "JNB": {
+    "name": "Johannesburg (OR Tambo)",
+    "price_per_gal_usd": 2.72,
+    "currency": "USD"
+  },
+  "DXB": {
+    "name": "Dubai Intl (UAE)",
+    "price_per_gal_usd": 2.4,
+    "currency": "USD"
+  },
+  "LHR": {
+    "name": "London Heathrow (UK)",
+    "price_per_gal_usd": 2.65,
+    "currency": "USD"
+  },
+  "BOM": {
+    "name": "Mumbai (Chhatrapati Shivaji)",
+    "price_per_gal_usd": 2.95,
+    "currency": "USD"
+  }
+}
