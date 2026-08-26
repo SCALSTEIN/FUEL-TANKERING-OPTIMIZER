@@ -1,4 +1,4 @@
-# ✈️ Commercial Flight Operations: Fuel Burn & Economic Tankering Optimizer
+Markdown# ✈️ Commercial Flight Operations: Fuel Burn & Economic Tankering Optimizer
 
 An end-to-end Flight Operations Engineering decision-support platform designed to model aerodynamic **cost-of-carry** penalties and evaluate **economic fuel tankering** opportunities across regional and long-haul commercial airline sectors (benchmarked on the JKIA hub network).
 
@@ -61,3 +61,20 @@ fuel-tankering-optimizer/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+🚀 4. Quickstart & InstallationBash# Clone the repository
+git clone [https://github.com/scalstein/fuel-tankering-optimizer.git](https://github.com/scalstein/fuel-tankering-optimizer.git)
+cd fuel-tankering-optimizer
+
+# Create and activate virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run test suite
+pytest tests/
+
+# Launch the Streamlit dashboard
+streamlit run app.py
+📊 5. Dashboard Features & VisualizationsDispatch KPI Summary: Instant identification of whether tankering is viable, recommended mass uplift, net dollar savings, and carry penalty percentage.  Structural Weight Envelopes: Real-time TOW, LAW, and ZFW validation with margin buffers against certified airframe ceilings.  Fuel Composition Breakdown: Clear breakdown of Trip, Contingency, Alternate, Final Holding Reserve, and Tankered fuel.  Price Differential Sensitivity Curve: Interactive Plotly graph analyzing break-even economics as outstation fuel prices fluctuate.  👨‍💻 Engineering AuthorPascal Ambogo MudimbaFlight Operations Engineering & Aviation Data SystemsGitHub: @scalsteinStreamlit Hub: share.streamlit.io/user/scalstein
