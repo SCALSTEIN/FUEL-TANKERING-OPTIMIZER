@@ -77,6 +77,11 @@ pytest tests/
 
 # Launch the Streamlit dashboard
 streamlit run app.py
-📊 5. Dashboard Features & VisualizationsDispatch KPI Summary: Instant identification of whether tankering is viable, recommended mass uplift, net dollar savings, and carry penalty percentage.  Structural Weight Envelopes: Real-time TOW, LAW, and ZFW validation with margin buffers against certified airframe ceilings.  Fuel Composition Breakdown: Clear breakdown of Trip, Contingency, Alternate, Final Holding Reserve, and Tankered fuel.  Price Differential Sensitivity Curve: Interactive Plotly graph analyzing break-even economics as outstation fuel prices fluctuate.
+📊 5. Dashboard Features & VisualizationsDispatch KPI Summary: Instant identification of whether tankering is viable,
+recommended mass uplift, net dollar savings, and carry penalty percentage.
+Structural Weight Envelopes: Real-time TOW, LAW, and ZFW validation
+with margin buffers against certified airframe ceilings.
+Fuel Composition Breakdown: Clear breakdown of Trip, Contingency, Alternate, Final Holding Reserve, and Tankered fuel.
+Price Differential Sensitivity Curve: Interactive Plotly graph analyzing break-even economics as outstation fuel prices fluctuate.
 
 👨‍💻 Engineering AuthorPascal Ambogo MudimbaFlight Operations Engineering & Aviation Data SystemsGitHub: @scalsteinStreamlit Hub: share.streamlit.io/user/scalstein
