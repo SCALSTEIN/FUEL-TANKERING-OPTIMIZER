@@ -84,4 +84,8 @@ with margin buffers against certified airframe ceilings.
 Fuel Composition Breakdown: Clear breakdown of Trip, Contingency, Alternate, Final Holding Reserve, and Tankered fuel.
 Price Differential Sensitivity Curve: Interactive Plotly graph analyzing break-even economics as outstation fuel prices fluctuate.
 
-👨‍💻 Engineering AuthorPascal Ambogo MudimbaFlight Operations Engineering & Aviation Data SystemsGitHub: @scalsteinStreamlit Hub: share.streamlit.io/user/scalstein
+👨‍💻 Engineering Author
+Pascal Ambogo Mudimba
+Flight Operations Engineering & Aviation Data Systems
+GitHub: @scalstein
+Streamlit Hub: share.streamlit.io/user/scalstein
