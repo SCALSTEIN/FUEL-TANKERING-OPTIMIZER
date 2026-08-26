@@ -1,69 +1,63 @@
-# ✈️ Fuel Burn & Economic Tankering Optimizer
+# ✈️ Commercial Flight Operations: Fuel Burn & Economic Tankering Optimizer
 
-A production-grade Flight Operations Engineering decision-support platform designed to model aerodynamic **cost-of-carry** and evaluate **economic fuel tankering** opportunities across regional and long-haul commercial airline networks.
+An end-to-end Flight Operations Engineering decision-support platform designed to model aerodynamic **cost-of-carry** penalties and evaluate **economic fuel tankering** opportunities across regional and long-haul commercial airline sectors (benchmarked on the JKIA hub network).
 
----
-
-## 📌 1. Operational Problem Statement
-Fuel constitutes **25% to 40%** of an airline's Direct Operating Costs (DOC). Commercial carriers encounter substantial fuel price differentials across outstations due to local refinery access, transportation tariffs, and regional taxes. 
-
-While carrying surplus fuel from a lower-cost origin station avoids purchasing expensive fuel downline, the aircraft incurs an **aerodynamic burn penalty** (carrying extra weight increases total lift-induced drag and engine fuel consumption). 
-
-This tool dynamically evaluates the non-linear trade-off between fuel price spreads and flight burn penalties while strictly enforcing:
-1. **Maximum Takeoff Weight (MTOW)**
-2. **Maximum Landing Weight (MLW)**
-3. **Maximum Zero Fuel Weight (MZFW)**
-4. **Usable Fuel Tank Capacity & ICAO Fuel Reserve Mandates**
+[![Live Demo](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://scalstein-fuel-tankering-optimizer.streamlit.app/)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
-## 🧮 2. Mathematical Formulation
+## 📌 1. Operational Context & Problem Statement
+Fuel accounts for **25% to 40%** of commercial airline Direct Operating Costs (DOC)[cite: 2]. When operating between hub stations (e.g., Nairobi - HKJK) and regional outstations (e.g., Kigali - KGL, Entebbe - EBB, Dubai - DXB), fuel price differentials can exceed 20–35% due to local supply chains, refinery margins, and taxes[cite: 2].
 
-### Cost of Carry Penalty
+Carrying extra fuel (*tankering*) from a lower-cost origin to avoid expensive downline fueling saves money on fuel purchase price, but introduces an **aerodynamic cost-of-carry penalty**: the added mass increases required lift, induced drag, and cruise fuel burn[cite: 2].
+
+This system evaluates this non-linear trade-off in real-time, enforcing all structural and regulatory constraints:
+1. **Maximum Takeoff Weight (MTOW)**[cite: 2]
+2. **Maximum Landing Weight (MLW)**[cite: 2]
+3. **Maximum Zero Fuel Weight (MZFW)**[cite: 2]
+4. **Usable Fuel Tank Capacity**[cite: 2]
+5. **ICAO Annex 6 Fuel Reserve Policy** (Trip + 5% Contingency + Alternate Burn + 30-min Final Holding Reserve)[cite: 2, 6]
+
+---
+
+## 🧮 2. Mathematical Formulation & Engineering Logic
+
+### Non-Linear Cost-of-Carry Penalty
+The incremental fuel burn required to transport additional tankered mass $M_{\text{tanker}}$ over a sector of duration $T$ (hours) is modeled using the aircraft-specific aerodynamic penalty factor $\alpha$[cite: 2]:
+
 $$\Delta M_{\text{burn}} = M_{\text{tanker}} \cdot \left( e^{\alpha \cdot T} - 1 \right)$$
 
-*Where:*
-* $\alpha$: Aerodynamic carry penalty coefficient ($0.035 - 0.045 \text{ hr}^{-1}$)
-* $T$: Flight sector duration (hours)
+* Aircraft aerodynamic carry polars configured in the registry:
+  * **Boeing 737-800:** $\alpha = 0.038\text{ hr}^{-1}$[cite: 11]
+  * **Embraer E190:** $\alpha = 0.035\text{ hr}^{-1}$[cite: 11]
+  * **Boeing 787-8:** $\alpha = 0.032\text{ hr}^{-1}$[cite: 11]
 
-### Net Economic Margin ($\Delta C$)
+### Net Economic Differential ($\Delta C$)
 $$\Delta C = \left( M_{\text{tanker}} \cdot P_{\text{dest}} \right) - \left( (M_{\text{tanker}} + \Delta M_{\text{burn}}) \cdot P_{\text{origin}} \right)$$
 
-*Where $P_{\text{origin}}, P_{\text{dest}}$ are in $\text{USD/kg}$. Tankering is executed if and only if $\Delta C > 0$ under all structural weight envelopes.*
+*Where:*
+* $P_{\text{origin}}, P_{\text{dest}}$: Price per unit mass ($\text{USD/kg}$)[cite: 2].
+* **Decision Rule:** Tanker if and only if $\Delta C > 0$, subject to $\min(\text{MTOW Margin}, \text{MLW Margin}, \text{Tank Volume Capacity})$[cite: 2].
 
 ---
 
-## 🚀 3. Quickstart & Installation
+## 🏗️ 3. Repository Architecture
 
-### Local Setup
-```bash
-# Clone your repository
-git clone https://github.com/<YOUR_USERNAME>/fuel-tankering-optimizer.git
-cd fuel-tankering-optimizer
-
-# Create and activate virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Run automated test suite
-python -m pytest tests/
-
-# Launch interactive Streamlit dashboard
-streamlit run app.py
-```
-
----
-
-## 📊 4. Architecture & Features
-* **Modular Performance Models:** Dynamic profiles for B737-800, E190, and B787-8.
-* **Sensitivity Engine:** Instant parameter sweeps across station price deltas, headwinds, and payloads.
-* **Structural Envelope Validation:** Automated clipping against MTOW, MLW, and MZFW.
-* **Interactive UI:** Built with Streamlit and Plotly for intuitive dispatch decision-making.
-
----
-
-## 👨‍💻 Author & Engineering Context
-Developed as part of the Flight Operations Engineering Suite.
+```text
+fuel-tankering-optimizer/
+├── data/
+│   ├── aircraft_specs.json       # Structural weights (DOW, MZFW, MTOW, MLW) & fuel polars
+│   └── fuel_prices.json          # Benchmark regional station fuel prices ($/USG)
+├── src/
+│   ├── __init__.py
+│   ├── aircraft.py               # Aircraft data class models & registry loader
+│   ├── optimizer.py              # Cost-of-carry engine & structural constraint solver
+│   └── routes.py                 # Sector distance, standard flight times & burn profiles
+├── tests/
+│   └── test_optimizer.py         # Automated pytest test vectors for edge cases
+├── app.py                        # Interactive Streamlit dispatch & sensitivity UI
+├── requirements.txt
+├── .gitignore
+└── README.md
