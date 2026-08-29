@@ -1,4 +1,4 @@
-Markdown# ✈️ Commercial Flight Operations: Fuel Burn & Economic Tankering Optimizer
+✈️ Commercial Flight Operations: Fuel Burn & Economic Tankering Optimizer
 
 An end-to-end Flight Operations Engineering decision-support platform designed to model aerodynamic **cost-of-carry** penalties and evaluate **economic fuel tankering** opportunities across regional and long-haul commercial airline sectors (benchmarked on the JKIA hub network).
 
